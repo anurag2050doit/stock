@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+          crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" rel="script"></script>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/">Stock Exchange</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <form class="form-inline my-2 my-lg-0" action="" method="post">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+<table class="table table-hover" style="margin-top: 10px">
+  <thead class="thead-dark">
+  <tr>
+    <th scope="col">Name</th>
+    <th scope="col">Open</th>
+    <th scope="col">High</th>
+    <th scope="col">Low</th>
+    <th scope="col">Close</th>
+  </tr>
+  </thead>
+  <tbody>
+  {% for stock in stocks %}
+    <tr>
+      <td>{{ stock.name }}</td>
+      <td>{{ stock.open }}</td>
+      <td>{{ stock.high }}</td>
+      <td>{{ stock.low }}</td>
+      <td>{{ stock.close }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% if not stocks %}
+  <div class="alert alert-warning" role="alert">
+    <b>Opps!!</b> No Result Found
+  </div>
+{% endif %}
+
+</body>
+</html>

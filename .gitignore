@@ -1,0 +1,6 @@
+# Exclude env
+env/
+.idea
+
+# Exclude binary files
+*.pyc
