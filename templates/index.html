@@ -7,7 +7,10 @@
           crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" rel="script"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/>
+  <script type="text/javascript" src="static/js/table.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -18,34 +21,25 @@
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <form class="form-inline my-2 my-lg-0" action="" method="post">
+    <form class="form-inline my-2 my-lg-0" action="" method="post" id="searchForm">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
   </div>
 </nav>
-<table class="table table-hover" style="margin-top: 10px">
-  <thead class="thead-dark">
-  <tr>
-    <th scope="col">Name</th>
-    <th scope="col">Open</th>
-    <th scope="col">High</th>
-    <th scope="col">Low</th>
-    <th scope="col">Close</th>
-  </tr>
-  </thead>
-  <tbody>
-  {% for stock in stocks %}
+<div style="border: 1px solid; padding: 3px; width: 99%; margin: auto">
+  <table class="" id="myTable">
+    <thead class="thead-dark">
     <tr>
-      <td>{{ stock.name }}</td>
-      <td>{{ stock.open }}</td>
-      <td>{{ stock.high }}</td>
-      <td>{{ stock.low }}</td>
-      <td>{{ stock.close }}</td>
+      <th scope="col">Name</th>
+      <th scope="col">Open</th>
+      <th scope="col">High</th>
+      <th scope="col">Low</th>
+      <th scope="col">Close</th>
     </tr>
-  {% endfor %}
-  </tbody>
-</table>
+    </thead>
+  </table>
+</div>
 {% if not stocks %}
   <div class="alert alert-warning" role="alert">
     <b>Opps!!</b> No Result Found

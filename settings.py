@@ -13,7 +13,7 @@ env = Environment(loader=FileSystemLoader(CUR_DIR), trim_blocks=True)
 conf = {
     '/': {
         'tools.sessions.on': True,
-        'tools.staticdir.root': os.path.abspath(os.getcwd())
+        'tools.staticdir.root':  os.path.dirname(os.path.abspath(__file__))
     },
     '/static': {
         'tools.staticdir.on': True,

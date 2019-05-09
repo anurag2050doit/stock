@@ -1,4 +1,7 @@
+import json
+
 import cherrypy
+
 from settings import env, conf, db
 from spider.utils import constant
 from spider.utils.helper_functions import get_json_data
@@ -14,6 +17,17 @@ class Index(object):
             stocks = self.get_stocks()
         return template.render(stocks=stocks)
 
+    @cherrypy.expose
+    @cherrypy.tools.json_in()
+    def api(self):
+        if cherrypy.request.method == 'POST':
+            body = cherrypy.request.json
+            search = body.get('search', '')
+            stocks = json.dumps(self.get_filter_result(search))
+            return stocks
+        stocks = self.get_stocks()
+        return json.dumps(stocks)
+
     @staticmethod
     def get_filter_result(search):
         search = search + '*'
@@ -24,7 +38,7 @@ class Index(object):
     @staticmethod
     def get_stocks():
         stocks = db.get(constant.REDIS_DB_KEY)
-        return get_json_data(stocks)[:constant.DATA_LIMIT]
+        return get_json_data(stocks)
 
 
 if __name__ == '__main__':
