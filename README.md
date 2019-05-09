@@ -24,3 +24,10 @@
 - To run server `python manage.py`
 - Sever will start and navigate to `http://127.0.0.1:8080`  
 
+## Git
+
+Project covers both server side rendering as well as client side rendering (front-end rending) using ajax
+#### Server Side-Rendering
+
+- For **server side** rending using `jinja2` templating language.*Branch:* `git checkout master`
+- For **client side** rending using `jQuery Datatable`.*Branch:* `git checkout api`.
